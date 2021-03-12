@@ -1,0 +1,41 @@
+package com.bolsadeideas.springboot.app.models.services;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.bolsadeideas.springboot.app.models.entity.Factura;
+import com.bolsadeideas.springboot.app.models.entity.Producto;
+
+public interface IClienteService {
+
+	public List<Cliente> findAll(); // Método que devuelve la lista de clientes. El findAll se encarga de esa
+									// acción.
+	public Page<Cliente> findAll(Pageable pageable);
+
+	public void save(Cliente cliente); // Método para guardar un nuevo cliente en la base de datos.
+
+	public Cliente findOne(Long id); // Se pone Cliente ya que retornará un cliente, con este método se podrá editar
+										// un cliente.
+	
+	public Cliente fetchByIdWithFacturas(Long id);
+
+	public void delete(Long id);
+	
+	public List<Producto> findByNombre(String term);
+	
+	public void saveFactura(Factura factura);
+	
+	public Producto findProductoById(Long id);
+	
+	public Factura findFacturaById(Long id);
+	
+	public void deleteFactura(Long id);
+	
+	public Factura fetchByIdWithClienteWithItemFacturaWithProducto(Long id);
+	
+	
+
+}
